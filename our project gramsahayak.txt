@@ -1,0 +1,183 @@
+our project gramsahayak
+
+
+
+first of all let me make it clear that we are building this application for rural area people so the application should be portable and user friendly 
+
+
+
+next is that v need ui where each section pages should be in a balance propotion according to the area (key point is that the web site ui propotion should be matching for all the devices like mobile,tab,pc)
+
+other thisn is that it's a muilty page website not a single one 
+
+the project should have a ui theam color of green, white color there is also i main feature the alination of dash board should be on to and as the view changes that should be changed to sandwitch bar with all the dashboard element
+
+
+
+(#main poin is that i need the page to be in a user frendly quiet and professional looking page with alll the respective feature that is  been mention)
+
+
+
+i will give u the flow of the website how is it gowes 
+
+
+
+
+
+first is the overall theam of the website
+
+(rememeber that all the features should be in a correct propotion and balnce in  the page according to the divice that is been run on )
+
+ no on the landing page 
+
+ on the left side of the dashboard there should be on option to for changing the language to different (useing bashiniAPI to use different language on our website #point is that whine i change the language in this option the entire website language should be changed as per the language that is been selected) like #multilingual process
+
+
+
+next is the profile section for the first user on clicking it shoud show login or signup (when he is created an account this is the option that lead to show all profile details)
+
+
+
+now coming to the main page where v shart with the landing page there should be a simple intro heading of our project and a subheadding 
+
+
+
+there should be a two option one is where 1st button is start your business journyy and the the other one is i already have a buesness on clicking if u are loged in let to the next page if not as to login/signup 
+
+
+
+now on clicking on to the start your business journey button this should lead to the next section where it should ask basic details for the setting up the profile and the business strategy section 
+
+
+
+where it should ask for the following deatiles to be filled like:
+the details like Business idea name,buesiness catogary/sector,details concepts on next we need to choose the location where I want to start my business (key feature I need two option one where I can manually enter my location which direct the location in the maps or select the location in maps there is one more thing wing I search for my location there should be a map view where I can view the complete location also I can adjust the radius around the location there should be drag bar that can increase the initial radius as 5km to max 15km radius this is furter used for the compitator mapping around the are in research and analysis)(#can use the free api for map like google place map api or can use openmaproutting this use the free soure either one of them or any think better that is free accurate for mapping the nearby vendors and banks locality in the respected radius)
+for the next part i need a option where I can select the option that are already predefined like (Own Commercial Space,3 phase Electricity,rental shop/Room , Clean water supply,Transport Vehicle,Active Bank Account,Dry Storage/Ware House,internet and broadband,) also other  enters the current available resourcs
+next option is Demography Profile where he/she can enter the gender,Community Category(that contains the drop dow menu with all the list),Age,Education Level
+in the final there v can view all the report that v had filled till now just to conform if not there can be back option to edit or else evey think is ok then  the option  conform button that lead to the view page which is the 
+
+main section (to a new page) from now on 
+
+where the following features are shown 
+
+where 
+in the dashboard that shows the home,fesibility Report,Finicial Plan,Government and bank schemes, Cash Flow,Debt Flow,settings
+
+in the Home page that show the overall viable schore(that is calculated out of 100 by comparing along with the store in the surrounding location  that is been previously entered with the surrounding radius),Established Breack-Even,initial capital Reading,Load amount,and there should be a bar graph from the section,Financial Planing where the graph shows the in and out flow of cash with red and green color representation  Explore scheam that lead to the Explore scheam section from the dashboard view it should be capable of showing the scheam that are matching for the respective business ,at last there should be an option for Recent Activity
+
+next thing is the dashboard is Feasibility Report section 
+this lead to a page that shows the following details
+
+Overall Viable score(out of 100) where this lead using the help of no.of stores that are located around the entered location radius ,initial capital amount should be vied in a card,debt amount,in next card is about Strong Opportunity(swart analysis) this is were the basic llm is used it uses the given data by the user and the takes the input from the maps buy comparing with the no.of compitator in the perspective radius that I had marked in the maps along with the area poputation, density ,market potential (using the data sets should be taken from the real time portal that are latest updated)
+
+Tailored Strategy & Optimization Guidanc
+
+also it should suggest Alternative High-Potential Ventures in alternative Area for the given business this will is done by comparing all the business compitator in the locality area
+
+also these all should be marked on the live map where the location that v choose to start business,compitators around the locality,posiable Anchors and bancks these all should be marked on the maps with different symbols representing each of them
+
+in Finance Planing section in  the dashboard
+here v can modify the initial capital and bareminimum starter capital neede for this,capital established setup ,monthly recurring,and a graph that shows the finance tracking grapht for the data entered from the cach flow section data
+
+next is in the dashboard section Bank/government Scheme 
+in this section there should be a map that shows all the bank that is having all the scheme that are related to the business(by using the data from the real government and banck portal go for all the business what all the loan that are available) after that in bellow there v can view all the bank name details with all the details for eg(PM SVANidhi
+Prime Minister Street Vendor's AtmaNirbhar Nidhi
+
+microloan
+Max Amount
+
+₹0.5 Lakh
+
+Annual Interest Rate
+
+7% p.a.
+
+Max Tenure
+
+12 months
+
+Eligibility Overview
+
+Street vendors and hawkers with a Certificate of Vending or Urban Local Body recommendation.
+
+Eligibility Requirements
+
+•
+Must possess a Certificate of Vending (CoV) or Letter of Recommendation (LoR) from ULB
+
+•
+No minimum CIBIL score required
+
+•
+Must have an active bank/mobile wallet account
+
+•
+Age: 18 years and above
+
+Key Scheme Benefits
+
+Collateral-free working capital loan starting at ₹10,000 up to ₹50,000 on prompt repayment with 7% interest subsidy.
+
+No payments due for months 1–3, payments start month 4) also there shoul be an option that lead to the respective banck portal,and the location 
+
+
+
+in the dashboard section cash Flow 
+
+this contains all total inflows,total outflows,net liquid balance
+in the next section we can upload finance & statement document
+in the next I can manually entry the cash flow data where(date,option to select cash in and out flow,amount,categar)which is added to the datalist also this way I can upload all the further data this is cacluated for total inflows,total outflows,net liquid balance
+I can delete each individual data that I had entered 
+(this is the data that is fed to the financial plan section for the graph)
+
+next section is the debt management part from the dashboard
+
+where v can view the total outstanding Debt,Total Principal Repaid,Remaining Uupaid balance,Total Monthly EmiObligation
+
+in bellow we can add the loan record
+eg.(Add Business Loan Record
+
+Lender / Scheme Name *
+e.g. State Bank of India, Bank of Baroda, MUDRA Shishu
+Facility Type
+	
+MUDRA Kishore (₹50K–₹5L)
+Repayment Status
+
+On Track (Regular)
+Principal (₹) *
+e.g. 150000
+Interest (% p.a.)
+8.5
+Tenure (Months)
+36
+Monthly EMI (₹)
+Computed or actual EMI
+Remaining Balance (₹)
+Current unpaid amount
+Loan Disbursement / Start Date
+
+24-09-2026
+
+)
+these are the details that are are beed add to the part Active Loan Account
+
+(this update should be shown in the Home page)
+
+setting part from the dashboard
+where I can update the location ,also language ,and some other feature that I can update from the setting part
+
+from the profile part I can update my profile details that I had pre entered
+
+
+now coming to the next option from the landing page which is I have already Have business that should ask all the basic or else same detils as how it would work as I click on the button on landing page Start business Journy
+
+on where an extra option to add my per capita income and if have any pre exisisting loan  optional feature like finance statement uploading feature which this datais directed to the cash flow part
+
+
+
+for now I need an option to logging as a guest for the profile 
+
+
+/analysis the entire requirement how the flow works make the split the task and aline all the task and work balance the task so that the productivity can be increased 
+#note all the requirement are satisfy 

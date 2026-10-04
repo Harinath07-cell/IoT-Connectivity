@@ -1,0 +1,18 @@
+{
+  "current": {
+    "temperature": 0,
+    "humidity": 0,
+    "ldr": 0,
+    "bulbState": false,
+    "mode": "manual",
+    "timestamp": 0
+  },
+  "control": {
+    "mode": "manual",
+    "manualBulb": false,
+    "automationSource": "ldr",
+    "temperatureThreshold": 24,
+    "ldrThreshold": 500
+  },
+  "history": {}
+}
