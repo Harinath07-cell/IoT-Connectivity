@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>Home Monitor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <div id="loginView" class="auth-screen">
+    <div class="auth-card">
+      <div class="brand"><span class="brand-dot"></span> Home Monitor</div>
+      <h1>Welcome back</h1>
+      <p class="auth-copy">Sign in to view your home's live environment and control the light.</p>
+      <form id="loginForm" class="auth-form">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" autocomplete="current-password" placeholder="••••••••" required>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+        <div id="loginError" class="form-error hidden"></div>
+      </form>
+    </div>
+  </div>
+
+  <div id="appView" class="app-shell hidden">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand"><span class="brand-dot"></span> Home Monitor</div>
+        <div class="topbar-right">
+          <span id="connectionStatus" class="status-pill status-waiting"><span class="status-dot"></span> Connecting</span>
+          <button id="logoutBtn" class="btn btn-quiet">Sign out</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="page-heading">
+        <div>
+          <h1>Overview</h1>
+          <p>Live readings from your home monitoring system.</p>
+        </div>
+        <div class="signed-in">Signed in as <strong id="userEmail"></strong></div>
+      </div>
+
+      <section class="metric-grid">
+        <article class="metric-card">
+          <div class="metric-top"><span>Temperature</span><span class="metric-icon">°C</span></div>
+          <div id="temperatureValue" class="metric-number">--</div>
+          <div class="metric-meta">DHT11 sensor</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-top"><span>Humidity</span><span class="metric-icon">%</span></div>
+          <div id="humidityValue" class="metric-number">--</div>
+          <div class="metric-meta">DHT11 sensor</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-top"><span>Ambient light</span><span class="metric-icon">LDR</span></div>
+          <div id="ldrValue" class="metric-number">--</div>
+          <div class="metric-meta">ADC reading</div>
+        </article>
+        <article class="metric-card metric-card-bulb">
+          <div class="metric-top"><span>Bulb</span><span id="modeMini" class="small-tag">MANUAL</span></div>
+          <div id="bulbValue" class="metric-number">OFF</div>
+          <div id="bulbSub" class="metric-meta">Waiting for ESP32</div>
+        </article>
+      </section>
+
+      <section class="main-grid">
+        <article class="panel">
+          <div class="panel-heading">
+            <div><h2>Light control</h2><p>Choose how the relay controls the bulb.</p></div>
+          </div>
+
+          <div class="mode-switch" role="tablist" aria-label="Operating mode">
+            <button id="manualModeBtn" class="mode-btn active" type="button">Manual</button>
+            <button id="autoModeBtn" class="mode-btn" type="button">Automatic</button>
+          </div>
+
+          <div class="section-block">
+            <div class="row-between">
+              <div>
+                <div class="row-title">Manual control</div>
+                <div class="row-copy">Turn the bulb on or off from the dashboard.</div>
+              </div>
+              <div class="button-pair">
+                <button id="bulbOnBtn" class="btn btn-on" type="button">Turn on</button>
+                <button id="bulbOffBtn" class="btn btn-off" type="button">Turn off</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-block threshold-block">
+            <div class="row-between">
+              <div>
+                <div class="row-title">LDR threshold</div>
+                <div class="row-copy">In automatic mode, low light turns the bulb on.</div>
+              </div>
+              <div class="threshold-control">
+                <input id="ldrThreshold" type="number" min="0" max="4095" step="1" aria-label="LDR threshold">
+                <button id="saveThresholdBtn" class="btn btn-primary" type="button">Save</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="controlMessage" class="inline-message" aria-live="polite"></div>
+        </article>
+
+        <article class="panel status-panel">
+          <div class="panel-heading">
+            <div><h2>System status</h2><p>Current operating state.</p></div>
+          </div>
+          <div class="status-list">
+            <div class="status-row"><span>Operating mode</span><strong id="modeBadge">MANUAL</strong></div>
+            <div class="status-row"><span>Bulb state</span><strong id="statusBulb">OFF</strong></div>
+            <div class="status-row"><span>Last update</span><strong id="lastUpdated">--</strong></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="charts-grid">
+        <article class="panel chart-panel"><div class="panel-heading compact"><h2>Temperature</h2></div><div class="chart-wrap"><canvas id="temperatureChart"></canvas></div></article>
+        <article class="panel chart-panel"><div class="panel-heading compact"><h2>Humidity</h2></div><div class="chart-wrap"><canvas id="humidityChart"></canvas></div></article>
+        <article class="panel chart-panel"><div class="panel-heading compact"><h2>Ambient light</h2></div><div class="chart-wrap"><canvas id="ldrChart"></canvas></div></article>
+      </section>
+
+      <section class="panel history-panel">
+        <div class="panel-heading history-heading">
+          <div><h2>History</h2><p>Recent readings stored in Firebase.</p></div>
+          <button id="downloadCsvBtn" class="btn btn-secondary" type="button">Download CSV</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Time</th><th>Temperature</th><th>Humidity</th><th>LDR</th><th>Bulb</th><th>Mode</th></tr>
+            </thead>
+            <tbody id="historyBody"><tr><td colspan="6" class="empty">No readings yet.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="footer"><span>Firebase + ESP32</span><span>Home monitoring dashboard</span></footer>
+    </main>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
